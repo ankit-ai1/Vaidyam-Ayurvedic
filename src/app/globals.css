@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   VAIDYAM DESIGN SYSTEM
+   Palette rationale:
+   - forest: near-black deep green, used instead of pure black for warmth
+   - ivory: warm off-white background (not stark #fff)
+   - turmeric: signature gold accent — drawn from actual turmeric root,
+     used sparingly for CTAs, prices, active states
+   - sage: muted green for secondary accents, success states
+   - clay: warm terracotta-red for sale/alert states
+   - ink: near-black text color with a warm undertone
+   ========================================================================== */
+
+:root {
+  /* Core palette */
+  --color-forest-950: #0f1a13;
+  --color-forest-900: #1c2b22;
+  --color-forest-800: #26392e;
+  --color-forest-700: #33493c;
+  --color-forest-600: #47614f;
+  --color-forest-500: #5c7a67;
+
+  --color-ivory-50: #fefdfb;
+  --color-ivory-100: #faf6ee;
+  --color-ivory-200: #f4ecdc;
+  --color-ivory-300: #ebdec3;
+
+  --color-turmeric-400: #d9ab52;
+  --color-turmeric-500: #c99a3d;
+  --color-turmeric-600: #ab7f2c;
+  --color-turmeric-700: #8a6522;
+
+  --color-sage-400: #a3b596;
+  --color-sage-500: #8fa382;
+  --color-sage-600: #718765;
+
+  --color-clay-400: #c47c62;
+  --color-clay-500: #b5654a;
+  --color-clay-600: #98503a;
+
+  --color-ink-900: #14140f;
+  --color-ink-700: #2b2b23;
+  --color-ink-500: #565549;
+  --color-ink-300: #8c8a7a;
+  --color-ink-100: #d8d5c6;
+
+  --background: var(--color-ivory-100);
+  --foreground: var(--color-ink-900);
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+  --radius-tight: 0.5rem;
+
+  --shadow-soft: 0 2px 8px -2px rgba(28, 43, 34, 0.06), 0 8px 24px -8px rgba(28, 43, 34, 0.08);
+  --shadow-lifted: 0 8px 16px -4px rgba(28, 43, 34, 0.08), 0 24px 48px -12px rgba(28, 43, 34, 0.14);
+  --shadow-glass: 0 8px 32px -8px rgba(28, 43, 34, 0.18);
+}
+
+.dark {
+  --background: var(--color-forest-950);
+  --foreground: var(--color-ivory-100);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-forest-950: var(--color-forest-950);
+  --color-forest-900: var(--color-forest-900);
+  --color-forest-800: var(--color-forest-800);
+  --color-forest-700: var(--color-forest-700);
+  --color-forest-600: var(--color-forest-600);
+  --color-forest-500: var(--color-forest-500);
+
+  --color-ivory-50: var(--color-ivory-50);
+  --color-ivory-100: var(--color-ivory-100);
+  --color-ivory-200: var(--color-ivory-200);
+  --color-ivory-300: var(--color-ivory-300);
+
+  --color-turmeric-400: var(--color-turmeric-400);
+  --color-turmeric-500: var(--color-turmeric-500);
+  --color-turmeric-600: var(--color-turmeric-600);
+  --color-turmeric-700: var(--color-turmeric-700);
+
+  --color-sage-400: var(--color-sage-400);
+  --color-sage-500: var(--color-sage-500);
+  --color-sage-600: var(--color-sage-600);
+
+  --color-clay-400: var(--color-clay-400);
+  --color-clay-500: var(--color-clay-500);
+  --color-clay-600: var(--color-clay-600);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-300: var(--color-ink-300);
+  --color-ink-100: var(--color-ink-100);
+
+  /* Convenience aliases used throughout components */
+  --color-ivory: var(--color-ivory-100);
+  --color-ink: var(--color-ink-900);
+  --color-forest: var(--color-forest-900);
+  --color-turmeric: var(--color-turmeric-500);
+  --color-sage: var(--color-sage-500);
+  --color-clay: var(--color-clay-500);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+  --radius-tight: var(--radius-tight);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lifted: var(--shadow-lifted);
+  --shadow-glass: var(--shadow-glass);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.5s ease forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-ink-100);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--color-turmeric-400);
+    color: var(--color-forest-950);
+  }
+
+  /* Visible keyboard focus — accessibility floor */
+  :focus-visible {
+    outline: 2px solid var(--color-turmeric-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(254, 253, 251, 0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .glass-dark {
+    background: rgba(15, 26, 19, 0.55);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-vaidyam {
+    width: 100%;
+    max-width: 96rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-vaidyam {
+      padding-inline: 3rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container-vaidyam {
+      padding-inline: 4rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
